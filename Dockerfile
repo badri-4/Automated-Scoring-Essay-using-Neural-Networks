@@ -10,11 +10,11 @@ COPY . /app
 # Install any needed packages specified in requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Make port 80 available to the world outside this container
+# Install Streamlit
+RUN pip install streamlit
+
+# Expose port 80
 EXPOSE 80
 
-# Define environment variable
-ENV NAME FastAPIApp
-
-# Run app.py when the container launches
-CMD ["gunicorn", "-w", "4", "-k", "uvicorn.workers.UvicornWorker", "app:app", "--bind", "0.0.0.0:80"]
+# Run FastAPI and Streamlit apps
+CMD ["sh", "-c", "uvicorn app:app --host 0.0.0.0 --port 8000 & streamlit run streamlit_app.py --server.port 80 --server.address 0.0.0.0"]
