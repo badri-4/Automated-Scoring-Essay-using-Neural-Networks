@@ -1,3 +1,4 @@
+import os
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
@@ -8,8 +9,8 @@ class Essay(BaseModel):
 
 app = FastAPI()
 
-# Use raw string for the file path to avoid Unicode escape errors
-save_path = './'
+# Use environment variable for the file path
+save_path = os.getenv('MODEL_PATH', './')
 
 try:
     # Load the tokenizer and model from the saved path
