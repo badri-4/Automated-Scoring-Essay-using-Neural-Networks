@@ -15,5 +15,3 @@ if st.button("Get Score"):
             st.error(f"Failed to get a score: {e}")
     else:
         st.warning("Please enter an essay.")
-
-
