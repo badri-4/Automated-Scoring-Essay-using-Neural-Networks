@@ -9,7 +9,7 @@ class Essay(BaseModel):
 app = FastAPI()
 
 # Use raw string for the file path to avoid Unicode escape errors
-save_path = r"C:\Users\badri\Downloads\deberta-v3-base_AES2-20240722T163920Z-002\deberta-v3-base_AES2"
+save_path = './'
 
 try:
     # Load the tokenizer and model from the saved path
